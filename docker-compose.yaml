@@ -1,0 +1,28 @@
+#https://bobcares.com/blog/docker-compose-nginx-php-fpm-mysql-wordpress/
+services:
+  nginx:
+    container_name: nginx_inception
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./wordpress_data:/data/www/
+    networks:
+      - front
+      - back
+    depends_on:
+      - wordpress
+  wordpress:
+    container_name: wp_inception
+    build: ./wordPress_php_fpm
+    ports:
+      - 9000:9000
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./wordpress_data:/data/www/
+    networks:
+      - back
+networks:
+  front: {}
+  back: {}
