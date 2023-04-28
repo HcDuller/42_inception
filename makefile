@@ -42,3 +42,5 @@ ship_wordpress:
 	--name $(WORDPRESS_NAME) \
 	--mount type=bind,source=$(pwd)/wordpress_data,destination=/data/www \
 	$(WORDPRESS_IMAGE)
+#docker-compose -f ./docker-compose.yaml down
+#docker-compose up -d --build

@@ -1,4 +1,5 @@
 #https://bobcares.com/blog/docker-compose-nginx-php-fpm-mysql-wordpress/
+version: "3"
 services:
   nginx:
     container_name: nginx_inception
@@ -6,7 +7,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./wordpress_data:/data/www/
+      - wp_data:/data/www
     networks:
       - front
       - back
@@ -20,9 +21,17 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - ./wordpress_data:/data/www/
+      - wp_data:/data/www
     networks:
       - back
 networks:
   front: {}
   back: {}
+volumes:
+  wp_data:
+    driver: local
+    driver_opts:
+      device: ./wordpress_data
+      o: bind
+      type: none
+    name: wp_data
