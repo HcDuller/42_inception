@@ -24,6 +24,13 @@ services:
       - wp_data:/data/www
     networks:
       - back
+  mariadb:
+    container_name: mariadb
+    build: ./mariadb
+    ports:
+      - 3306:3306
+    networks:
+      - back
 networks:
   front: {}
   back: {}
