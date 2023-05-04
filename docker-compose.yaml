@@ -15,7 +15,13 @@ services:
       - wordpress
   wordpress:
     container_name: wordpress
-    build: ./src/wordpress
+    build:
+      context: ./src/wordpress
+      dockerfile: Dockerfile
+      args:
+        - DBNAME=${DBNAME}
+        - DBUSER=${DBUSER}
+        - DBPSW=${DBPSW}
     image: wordpress:10
     ports:
       - 9000:9000
