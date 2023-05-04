@@ -1,9 +1,9 @@
-#https://bobcares.com/blog/docker-compose-nginx-php-fpm-mysql-wordpress/
 version: "3"
 services:
   nginx:
-    container_name: nginx_inception
-    build: ./nginx
+    container_name: nginx
+    build: ./src/nginx
+    image: nginx:10
     ports:
       - 80:80
     volumes:
@@ -14,8 +14,9 @@ services:
     depends_on:
       - wordpress
   wordpress:
-    container_name: wp_inception
-    build: ./wordPress_php_fpm
+    container_name: wordpress
+    build: ./src/wordpress
+    image: wordpress:10
     ports:
       - 9000:9000
     tty: true
@@ -24,11 +25,24 @@ services:
       - wp_data:/data/www
     networks:
       - back
+    environment:
+      - DBNAME
+      - DBUSER
+      - DBPSW
   mariadb:
     container_name: mariadb
-    build: ./mariadb
+    build:
+      context:  ./src/mariadb
+      dockerfile: Dockerfile
+      args:
+        - DBNAME=${DBNAME}
+        - DBUSER=${DBUSER}
+        - DBPSW=${DBPSW}
+    image: mariadb:10
     ports:
       - 3306:3306
+    volumes:
+      - wp_db:/var/lib/mysql
     networks:
       - back
 networks:
@@ -37,8 +51,15 @@ networks:
 volumes:
   wp_data:
     driver: local
-    driver_opts:
-      device: ./wordpress_data
-      o: bind
-      type: none
     name: wp_data
+    driver_opts:
+      type: none
+      device: ./wordpress_app
+      o: bind
+  wp_db:
+    driver: local
+    name: wp_db
+    driver_opts:
+      type: none
+      device: ./wordpress_db
+      o: bind
