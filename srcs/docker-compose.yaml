@@ -2,7 +2,7 @@ version: "3"
 services:
   nginx:
     container_name: nginx
-    build: ./src/nginx
+    build: ./requirements/nginx
     image: nginx:10
     ports:
       - 80:80
@@ -16,7 +16,7 @@ services:
   wordpress:
     container_name: wordpress
     build:
-      context: ./src/wordpress
+      context: ./requirements/wordpress
       dockerfile: Dockerfile
       args:
         - DBNAME=${DBNAME}
@@ -38,7 +38,7 @@ services:
   mariadb:
     container_name: mariadb
     build:
-      context:  ./src/mariadb
+      context:  ./requirements/mariadb
       dockerfile: Dockerfile
       args:
         - DBNAME=${DBNAME}

@@ -1,0 +1,19 @@
+
+
+SHOW CREATE TABLE wp_commentmeta;
+SHOW CREATE TABLE wp_comments;
+SHOW CREATE TABLE wp_links;
+SHOW CREATE TABLE wp_options;
+SHOW CREATE TABLE wp_postmeta;
+SHOW CREATE TABLE wp_posts;
+SHOW CREATE TABLE wp_term_relationships;
+SHOW CREATE TABLE wp_term_taxonomy;
+SHOW CREATE TABLE wp_termmeta;
+SHOW CREATE TABLE wp_terms;
+SHOW CREATE TABLE wp_usermeta;
+SHOW CREATE TABLE wp_users;
+
+On Unix/Linux:
+Create a file called wp.txt, containing nothing but the new password.
+tr -d ‘\r\n’ < wp.txt | md5sum | tr -d ‘ -‘
+rm wp.txt
