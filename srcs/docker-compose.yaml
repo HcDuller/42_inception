@@ -6,6 +6,7 @@ services:
     image: nginx:10
     ports:
       - 80:80
+    restart: always
     volumes:
       - wp_data:/data/www
     networks:
@@ -23,8 +24,9 @@ services:
         - DBUSER=${DBUSER}
         - DBPSW=${DBPSW}
     image: wordpress:10
-    ports:
-      - 9000:9000
+    # ports:
+    #   - 9000:9000
+    restart: always
     tty: true
     stdin_open: true
     volumes:
@@ -44,9 +46,14 @@ services:
         - DBNAME=${DBNAME}
         - DBUSER=${DBUSER}
         - DBPSW=${DBPSW}
+        - WPADM=${WPADM}
+        - WPADMPSW=${WPADMPSW}
+        - WPUSR=${WPUSR}
+        - WPUSRPSW=${WPUSRPSW}
     image: mariadb:10
-    ports:
-      - 3306:3306
+    # ports:
+    #   - 3306:3306
+    restart: always
     volumes:
       - wp_db:/var/lib/mysql
     networks:
@@ -60,12 +67,12 @@ volumes:
     name: wp_data
     driver_opts:
       type: none
-      device: ./wordpress_app
+      device: ~/data/wordpress_app
       o: bind
   wp_db:
     driver: local
     name: wp_db
     driver_opts:
       type: none
-      device: ./wordpress_db
+      device: ~/data/wordpress_db
       o: bind

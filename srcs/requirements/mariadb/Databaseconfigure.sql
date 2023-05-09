@@ -1,3 +1,0 @@
-CREATE USER 'admin'@'%' IDENTIFIED BY '1234';
-GRANT ALL PRIVILEGES ON mydatabase.* TO 'admin'@'%';
-FLUSH PRIVILEGES;
