@@ -32,15 +32,15 @@ RUN sed -i "s/^.*DB_USER.*$/define('DB_USER', '${DBUSER}');/" /data/www/wordpres
 RUN sed -i "s/^.*DB_PASSWORD.*$/define('DB_PASSWORD', '${DBPSW}');/" /data/www/wordpress/wp-config.php
 RUN sed -i "s/^.*DB_HOST.*$/define('DB_HOST', 'mariadb');/" /data/www/wordpress/wp-config.php
 RUN sed -i "s/^.*DB_CHARSET.*$/define('DB_CHARSET', 'utf8mb4');/" /data/www/wordpress/wp-config.php
-RUN sed -i "s/^.*'AUTH_KEY'.*$//" /data/www/wordpress/wp-config.php
-RUN sed -i "s/^.*'SECURE_AUTH_KEY'.*$//" /data/www/wordpress/wp-config.php
-RUN sed -i "s/^.*'LOGGED_IN_KEY'.*$//" /data/www/wordpress/wp-config.php
-RUN sed -i "s/^.*'NONCE_KEY'.*$//" /data/www/wordpress/wp-config.php
-RUN sed -i "s/^.*'AUTH_SALT'.*$//" /data/www/wordpress/wp-config.php
-RUN sed -i "s/^.*'SECURE_AUTH_SALT'.*$//" /data/www/wordpress/wp-config.php
-RUN sed -i "s/^.*'LOGGED_IN_SALT'.*$//" /data/www/wordpress/wp-config.php
-RUN sed -i "s/^.*'NONCE_SALT'.*$//" /data/www/wordpress/wp-config.php
-RUN curl https://api.wordpress.org/secret-key/1.1/salt/ >> /data/www/wordpress/wp-config.php
+# RUN sed -i "s/^.*'AUTH_KEY'.*$//" /data/www/wordpress/wp-config.php
+# RUN sed -i "s/^.*'SECURE_AUTH_KEY'.*$//" /data/www/wordpress/wp-config.php
+# RUN sed -i "s/^.*'LOGGED_IN_KEY'.*$//" /data/www/wordpress/wp-config.php
+# RUN sed -i "s/^.*'NONCE_KEY'.*$//" /data/www/wordpress/wp-config.php
+# RUN sed -i "s/^.*'AUTH_SALT'.*$//" /data/www/wordpress/wp-config.php
+# RUN sed -i "s/^.*'SECURE_AUTH_SALT'.*$//" /data/www/wordpress/wp-config.php
+# RUN sed -i "s/^.*'LOGGED_IN_SALT'.*$//" /data/www/wordpress/wp-config.php
+# RUN sed -i "s/^.*'NONCE_SALT'.*$//" /data/www/wordpress/wp-config.php
+# RUN curl https://api.wordpress.org/secret-key/1.1/salt/ >> /data/www/wordpress/wp-config.php
 
 RUN chown -R www:www /data
 
