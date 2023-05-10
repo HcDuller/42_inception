@@ -5,7 +5,6 @@ services:
     build: ./requirements/nginx
     image: nginx:10
     ports:
-      - 80:80
       - 443:443
     restart: always
     volumes:

@@ -1,18 +1,20 @@
-# nginx docs https://nginx.org/en/docs/
-# nginx recipe https://www.nginx.com/resources/wiki/start/topics/recipes/wordpress/
-# https://www.cyberciti.biz/faq/how-to-install-nginx-web-server-on-alpine-linux/
 FROM alpine:3.15
 
+#Install needed tools
 RUN apk update && apk upgrade
 RUN apk add nginx --no-cache
-RUN mkdir /data && mkdir /data/www
-RUN adduser -D -g 'www' www
+RUN apk add openssl --no-cache
 
+#Create needed directories
+RUN mkdir -p /data/www /etc/ssl/certs /etc/ssl/private
+
+#Copy necessary configuration
+COPY ./tools/certConfig.conf /tmp/cert.conf
 COPY ./tools/nginx.conf /etc/nginx/
-COPY ./tools/index.html /data/www/
 COPY ./tools/phpinfo.php /data/www/
+COPY ./tools/setup.sh /tmp/setup.sh
 
-RUN chown -R www:www /var/lib/nginx
-RUN chown -R www:www /data
+#Setup ssl certificates in one step (reduces image layers)
+RUN /tmp/setup.sh
 
 CMD ["nginx","-g","daemon off;"]
