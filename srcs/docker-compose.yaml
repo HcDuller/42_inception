@@ -10,8 +10,7 @@ services:
     volumes:
       - wp_data:/data/www
     networks:
-      - front
-      - back
+      - inception
     depends_on:
       - wordpress
   wordpress:
@@ -24,15 +23,13 @@ services:
         - DBUSER=${DBUSER}
         - DBPSW=${DBPSW}
     image: wordpress:10
-    # ports:
-    #   - 9000:9000
     restart: always
-    tty: true
-    stdin_open: true
+    # tty: true
+    # stdin_open: true
     volumes:
       - wp_data:/data/www
     networks:
-      - back
+      - inception
     environment:
       - DBNAME
       - DBUSER
@@ -51,16 +48,14 @@ services:
         - WPUSR=${WPUSR}
         - WPUSRPSW=${WPUSRPSW}
     image: mariadb:10
-    # ports:
-    #   - 3306:3306
     restart: always
     volumes:
       - wp_db:/var/lib/mysql
     networks:
-      - back
+      - inception
 networks:
-  front: {}
-  back: {}
+  inception:
+    driver: bridge
 volumes:
   wp_data:
     driver: local
