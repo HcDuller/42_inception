@@ -10,8 +10,7 @@ ARG WPUSR
 ARG WPUSRPSW
 
 #install mariaDb
-RUN apk update && apk add mariadb --no-cache
-RUN apk add mariadb-client --no-cache
+RUN apk update && apk add mariadb mariadb-client --no-cache
 
 #Make default configuration an backup file (add .orig to it)
 RUN mv /etc/my.cnf.d/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf.orig
