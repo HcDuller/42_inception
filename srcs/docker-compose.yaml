@@ -13,6 +13,7 @@ services:
       - inception
     depends_on:
       - wordpress
+      - mariadb
   wordpress:
     container_name: wordpress
     build:
@@ -24,12 +25,12 @@ services:
         - DBPSW=${DBPSW}
     image: wordpress:10
     restart: always
-    # tty: true
-    # stdin_open: true
     volumes:
       - wp_data:/data/www
     networks:
       - inception
+    depends_on:
+      - mariadb
     environment:
       - DBNAME
       - DBUSER
