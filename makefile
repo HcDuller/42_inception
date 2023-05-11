@@ -11,4 +11,4 @@ clean:
 	docker-compose --file ./srcs/docker-compose.yaml --env-file .env down --rmi all --volumes
 
 fclean: clean
-	sudo rm -rfd ~/data/wordpress_app/* ~/data/wordpress_app/*
+	sudo rm -rfd ~/data/wordpress_db/* ~/data/wordpress_app/*

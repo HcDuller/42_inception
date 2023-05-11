@@ -11,7 +11,7 @@ RUN mkdir -p /data/www /etc/ssl/certs /etc/ssl/private
 #Copy necessary configuration
 COPY ./tools/certConfig.conf /tmp/cert.conf
 COPY ./tools/nginx.conf /etc/nginx/
-COPY ./tools/phpinfo.php /data/www/
+# COPY ./tools/phpinfo.php /data/www/
 COPY ./tools/setup.sh /tmp/setup.sh
 
 #Setup ssl certificates in one step (reduces image layers)
