@@ -62,12 +62,12 @@ volumes:
     name: wp_data
     driver_opts:
       type: none
-      device: ~/data/wordpress_app
+      device: ~/hde-camp/data/wordpress_app
       o: bind
   wp_db:
     driver: local
     name: wp_db
     driver_opts:
       type: none
-      device: ~/data/wordpress_db
+      device: ~/hde-camp/data/wordpress_db
       o: bind
