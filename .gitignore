@@ -1,3 +1,5 @@
 ./srcs/wordpress_app/*
 ./srcs/wordpress_db/*
 .env
+.vscode
+.vscode/*
