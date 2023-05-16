@@ -19,10 +19,6 @@ services:
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
-      args:
-        - DBNAME=${DBNAME}
-        - DBUSER=${DBUSER}
-        - DBPSW=${DBPSW}
     image: wordpress:10
     restart: always
     volumes:
@@ -35,19 +31,19 @@ services:
       - DBNAME
       - DBUSER
       - DBPSW
+      - WPADM
+      - WPADMPSW
+      - WPUSR
+      - WPUSRPSW
   mariadb:
     container_name: mariadb
     build:
       context:  ./requirements/mariadb
       dockerfile: Dockerfile
       args:
-        - DBNAME=${DBNAME}
         - DBUSER=${DBUSER}
         - DBPSW=${DBPSW}
-        - WPADM=${WPADM}
-        - WPADMPSW=${WPADMPSW}
-        - WPUSR=${WPUSR}
-        - WPUSRPSW=${WPUSRPSW}
+        - DBROOTPSW=${DBROOTPSW}
     image: mariadb:10
     restart: always
     volumes:
