@@ -1,0 +1,14 @@
+{
+  "name": "inception",
+  "version": "1.0.0",
+  "description": "This is a simple static serve",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Henrique de Campos Duller (hde-camp)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

@@ -10,6 +10,7 @@ services:
       - "20-21:20-21" #ftpserver
       - 444:444 #adminer
       - "27017:27017" #mongodb
+      - "80:80" #expressjs
     restart: always
     volumes:
       - wp_data:/data/www
@@ -100,6 +101,15 @@ services:
     restart: always
     volumes:
       - mongodb:/data/db
+    networks:
+      - inception
+  expressjs:
+    container_name: expressjs
+    build:
+      context:  ./requirements/bonus/expressjs
+      dockerfile: Dockerfile
+    image: expressjs:10
+    restart: always
     networks:
       - inception
 networks:
