@@ -3,6 +3,8 @@
 all: setHost
 	mkdir -p ~/hde-camp/data/wordpress_app
 	mkdir -p ~/hde-camp/data/wordpress_db
+	mkdir -p ~/hde-camp/data/adminer
+	mkdir -p ~/hde-camp/data/mongodb
 	docker-compose --file ./srcs/docker-compose.yaml --env-file ./srcs/.env up
 
 re: fclean all
@@ -21,3 +23,4 @@ setHost:
 
 prune:
 	docker system prune --all -f
+	docker network prune

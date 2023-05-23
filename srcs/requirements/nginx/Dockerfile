@@ -3,10 +3,11 @@ FROM alpine:3.15
 #Install needed tools
 RUN apk update && apk upgrade
 RUN apk add nginx --no-cache
+RUN apk add nginx-mod-stream --no-cache
 RUN apk add openssl --no-cache
 
 #Create needed directories
-RUN mkdir -p /data/www /etc/ssl/certs /etc/ssl/private
+RUN mkdir -p /data/www /etc/ssl/certs /etc/ssl/private /data/adminer
 
 #Copy necessary configuration
 COPY ./tools/certConfig.conf /tmp/cert.conf
