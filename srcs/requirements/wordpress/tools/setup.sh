@@ -7,6 +7,6 @@ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pha
 chmod +x wp-cli.phar;
 mv wp-cli.phar /usr/local/bin/wp;
 chown -R www:www /data
-mv /etc/php8/php-fpm.conf /etc/php8/php-fpm.conf.orig
-mv /etc/php8/php-fpm.d/www.conf /etc/php8/php-fpm.d/www.conf.orig
-mv /etc/php8/php.ini /etc/php8/php.ini.orig
+mv /etc/php81/php-fpm.conf /etc/php81/php-fpm.conf.orig
+mv /etc/php81/php-fpm.d/www.conf /etc/php81/php-fpm.d/www.conf.orig
+mv /etc/php81/php.ini /etc/php81/php.ini.orig

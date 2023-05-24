@@ -42,4 +42,4 @@ else
 fi
 
 # Bonus End
-php-fpm8 -F
+php-fpm81 -F

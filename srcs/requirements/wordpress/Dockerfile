@@ -1,56 +1,48 @@
-FROM alpine:3.16
+FROM alpine:3.17
 
-RUN apk update
+RUN apk update && apk upgrade
 #install php
-RUN apk add \
+RUN apk add php \
 	php-phar \
 	php-tokenizer \
-	php8-fpm \
-	php8-soap \
-	php8-openssl \
-	php8-gmp \
-
-	php8-pdo_odbc \
-	php8-json \
-	php8-dom \
-
-	php8-pdo \
-	php8-zip \
-	php8-mysqli \
-
-	php8-sqlite3 \
-	php8-apcu \
-	php8-pdo_pgsql \
-
-	php8-bcmath \
-	php8-gd \
-	php8-odbc \
-
-	php8-pdo_mysql \
-	php8-pdo_sqlite \
-	php8-gettext \
-
-	php8-xmlreader \
-	php8-bz2 \
-	php8-iconv \
-
-	php8-pdo_dblib \
-	php8-curl \
-	php8-ctype \
-
-	php8-fileinfo \
-	php8-pecl-imagick \
+	php-fpm \
+	php-soap \
+	php-openssl \
+	php-gmp \
+	php-pdo_odbc \
+	php-json \
+	php-dom \
+	php-pdo \
+	php-zip \
+	php-mysqli \
+	php-sqlite3 \
+	php-pdo_pgsql \
+	php-bcmath \
+	php-gd \
+	php-odbc \
+	php-pdo_mysql \
+	php-pdo_sqlite \
+	php-gettext \
+	php-xml \
+	php-xmlreader \
+	php-bz2 \
+	php-iconv \
+	php-pdo_dblib \
+	php-curl \
+	php-ctype \
+	php-fileinfo \
 	php-opcache \
-
+	php-mbstring \
+	php81-pecl-imagick \
 	curl wget --no-cache
 RUN apk add mariadb-client --no-cache
 
 COPY ./tools/setup.sh /tmp/setup.sh
 RUN /tmp/setup.sh
 
-COPY ./tools/php-fpm.conf /etc/php8/php-fpm.conf
-COPY ./tools/php-fpm.d_www.conf /etc/php8/php-fpm.d/www.conf
-COPY ./tools/php.ini /etc/php8/
+COPY ./tools/php-fpm.conf /etc/php81/php-fpm.conf
+COPY ./tools/php-fpm.d_www.conf /etc/php81/php-fpm.d/www.conf
+COPY ./tools/php.ini /etc/php81/
 COPY ./tools/startup.sh /etc/startup.sh
 RUN rm -f /tmp/*
 

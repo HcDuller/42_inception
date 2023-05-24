@@ -7,7 +7,7 @@ services:
     ports:
       - 443:443
 #Bonus Ports
-      - "20-21:20-21" # ftpserver
+      - "20-23:20-23" # ftpserver
       - 444:444 #       adminer
       - "27017:27017" # mongodb
       - "80:80" #       expressjs
@@ -79,6 +79,8 @@ services:
       - wp_data:/data/ftp
     networks:
       - inception
+    depends_on:
+      - wordpress
   adminer:
     container_name: adminer
     build:
@@ -90,6 +92,8 @@ services:
       - adminer:/data/adminer
     networks:
       - inception
+    depends_on:
+      - mariadb
   mongodb:
     container_name: mongodb
     build:
