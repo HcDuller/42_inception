@@ -122,14 +122,14 @@ volumes:
     name: wp_data
     driver_opts:
       type: none
-      device: ~/hde-camp/data/wordpress_app
+      device: /home/hde-camp/data/wordpress_app
       o: bind
   wp_db:
     driver: local
     name: wp_db
     driver_opts:
       type: none
-      device: ~/hde-camp/data/wordpress_db
+      device: /home/hde-camp/data/wordpress_db
       o: bind
 #Bonus Volumes
   adminer:
@@ -137,12 +137,12 @@ volumes:
     name: adminer
     driver_opts:
       type: none
-      device: ~/hde-camp/data/adminer
+      device: /home/hde-camp/data/adminer
       o: bind
   mongodb:
     driver: local
     name: mongodb
     driver_opts:
       type: none
-      device: ~/hde-camp/data/mongodb
+      device: /home/hde-camp/data/mongodb
       o: bind

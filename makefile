@@ -1,10 +1,10 @@
 .PHONY: all re clean fclean setHost prune
 
 all: setHost
-	mkdir -p ~/hde-camp/data/wordpress_app
-	mkdir -p ~/hde-camp/data/wordpress_db
-	mkdir -p ~/hde-camp/data/adminer
-	mkdir -p ~/hde-camp/data/mongodb
+	sudo mkdir -p /home/hde-camp/data/wordpress_app
+	sudo mkdir -p /home/hde-camp/data/wordpress_db
+	sudo mkdir -p /home/hde-camp/data/adminer
+	sudo mkdir -p /home/hde-camp/data/mongodb
 	docker-compose --file ./srcs/docker-compose.yaml --env-file ./srcs/.env up
 
 re: fclean all
@@ -14,7 +14,7 @@ clean:
 
 fclean:
 	docker-compose --file ./srcs/docker-compose.yaml --env-file ./srcs/.env down --rmi all --volumes
-	sudo rm -rfd ~/hde-camp
+	sudo rm -rfd /home/hde-camp
 	sudo sed -i '/hde-camp/d' /etc/hosts
 	sudo chmod 644 /etc/hosts
 
