@@ -73,6 +73,9 @@ services:
     build:
       context:  ./bonus/ftpserver
       dockerfile: Dockerfile
+      args:
+        - FTP_USR=${FTP_USR}
+        - FTP_PSW=${FTP_PSW}
     image: ftpserver:10
     restart: always
     volumes:

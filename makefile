@@ -23,4 +23,5 @@ setHost:
 
 prune:
 	docker system prune --all -f
-	docker network prune
+	docker network prune << y
+	docker volume prune << y
